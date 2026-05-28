@@ -17,4 +17,10 @@ test.describe('OrangeHRM - authentication', () => {
     await loginPage.step_login(users.emptyPassword);
     await loginPage.verify_passwordFieldError(expected.errors.requiredField); 
   });
+
+  test('should reject login with valid username and wrong password', async ({ loginPage }) => {
+    await loginPage.step_navigate();
+    await loginPage.step_login({ username: users.admin.username, password: 'wrong_password' });
+    await loginPage.verify_errorMessage(expected.errors.invalidCredentials);
+  });
 });
