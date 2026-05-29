@@ -8,4 +8,12 @@ test.describe('OrangeHRM - dashboard', () => {
     await dashboardPage.verify_onDashboard();
     await dashboardPage.verify_pageTitle(expected.labels.pageTitle);
   });
+
+  test('should show dashboard navigation and title after login 2', async ({ loginPage, dashboardPage }) => {
+    await loginPage.step_navigate();
+    await loginPage.step_login(users.admin);
+    await dashboardPage.verify_onDashboard();
+    await dashboardPage.verify_pageTitle(expected.labels.pageTitle);
+  });
+
 });
